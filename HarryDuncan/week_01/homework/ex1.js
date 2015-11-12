@@ -54,14 +54,14 @@ var withdraw = function(person, cash){
 		} 
 	}; if (result.balance - cash >= 0){
 		result.balance = result.balance - cash;
-	console.log(person + 'stole $' + cash + ' from herself fool. She still has ' + result.balance + ' fucking dollars in da bank') 
+	console.log(person + 'you took $' + cash + ' from your bank.' + person + ' clearly cant save money. you only have ' + result.balance + ' fucking dollars left in LE bank') 
 	} else if (result.balance - cash < 0){
-		console.log('you have $' + result.balance + ' in the bank. go hustle 12K cash for a WDI course at GA and learn to code fucker.')
+		console.log('you have $ ' + result.balance + ' in the bank. go hustle 12K cash for a WDI course at GA and learn to code fucker.')
 	}
 }
 
 
-var transfer = function(name1, cashMoney, name2){ // this is working 
+var transfer = function(name1, cashMoney, name2){ // this is working // this is the function to transfer cash
 			withdraw(name1, cashMoney)
 			deposit(name2, cashMoney)
 			console.log(name1 + ' lent $' + cashMoney + ' to this broke ass mofo ' + name2)
