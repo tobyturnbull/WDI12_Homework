@@ -15,10 +15,39 @@
 // How to structure it...
 
 // We want a custom function called isLeapYear
-var isLeapYear = function (number){
-  if ((number%4 === 0 || number%100 === 0) && number %400 ===0){
+// var isLeapYear = function (number){
+//   if ((number%4 === 0 || number%100 === 0) && number %400 ===0){
+//     console.log(true) 
+//   } else if (number%100===0 && number%400===0){
+//     console.log(true)
+//   } else if (number%4===0)
+//     console.log()
+//   }
+// }
+
+// var isLeapYear = function (number){
+//  if (number $4 === 0){
+//   if (number %100 !== 0 || number %400 ==0){
+//   console.log(true);
+//   else{
+//     console.log(false)
+//   }
+//  } if (number %100 === 0){
+//   console.log(false);
+//  } else{
+//   console.log(false)
+//  }
+// } 
+
+var isLeapYear = function (year){
+  if (year % 4 === 0 && ( year % 100 !== 0 || year % 400 === 0 )){
     console.log(true)
-  } else{
+  }else{
     console.log(false)
   }
 }
+
+isLeapYear(1997)
+isLeapYear(1996)
+isLeapYear(1900)
+isLeapYear(2000)
