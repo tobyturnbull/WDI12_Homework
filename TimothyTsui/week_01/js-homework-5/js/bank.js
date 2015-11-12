@@ -45,7 +45,7 @@ var bank = {
           if (this.balance >= amt){
             this.balance -= amt;
           }else{
-            console.log("Can't withdraw");
+            console.log("\tInsufficient funds");
             return false;
           }
           console.log('\twithdraw $' + amt + ' balance: ' + this.balance);
@@ -62,22 +62,25 @@ var bank = {
       });
     },
     transfer: function( payer, payee, amt ){
-      for (var i=0; i < bank.accounts.length; i++){ // get account objects from account name
-        var account = bank.accounts[i];
-        if (account.name === payer){
-          payer = account;
-        }
-        if (account.name === payee){
-          payee = account;
-        }
-      }
-      if (typeof payer === 'object' && typeof payee === 'object' && payer.withdraw(amt)){
+      payer = this.getAccount(payer);
+      payee = this.getAccount(payee);
+      if (payee && payer && payer.withdraw(amt)){
         payee.deposit(amt);
       }else{
         console.log('accounts invalid or amount over payer balance');
         return false;
       }
       return true;
+    },
+    getAccount: function( name ){
+      var res = null;
+      for (var i=0; i < this.accounts.length; i++){ // get account objects from account name
+        var account = this.accounts[i];
+        if (account.name === name){
+           res = account;
+        }
+      }
+      return res;
     }
 };
 
@@ -85,12 +88,18 @@ bank.addAccount('tom', 2);
 bank.addAccount('bob', 25);
 bank.addAccount('hank', 100);
 
-bank.totalSum();
-var hank = bank.accounts[2];
-hank.withdraw(3);
-var tom = bank.accounts[0];
-tom.deposit(15);
+console.log("\nBob opens a bank account with $25, the bank charges him an 'annual fee' and withdraws $10, Bob deposits $5 and wonders wtf his balance is $20.");
+var bob = bank.getAccount('bob');
+bob.withdraw(10);
+bob.deposit(5);
 bank.totalSum();
 
-bank.transfer('bob', 'tom', 22);
+console.log("\nHank has $100. Tom has $2. Tom threatens to reveal Hank's dirty secret that he watches my little pony so Hank transfers $25 to Tom. Hank's balance is $75 and Tom has $27. Tom tell's his friends anyway.");
+var hank = bank.getAccount('hank');
+var tom = bank.getAccount('tom');
+bank.transfer('hank', 'tom', 25);
+bank.totalSum();
+
+console.log("\nTom needs to pay hospital fees after Hank punched him in the face and tries to withdraw $30 but his balance is $27.");
+tom.withdraw(30);
 bank.totalSum();
