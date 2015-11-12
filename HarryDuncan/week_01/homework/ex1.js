@@ -30,7 +30,7 @@ var checkAccount = function(name){   // this is the function to check the indivi
 }
 
 addAccount('harry', 500)
-addAccount('shenna',500)
+addAccount('joel',500)
 
 // this is the function to be able to deposit from individual accounts 
 
