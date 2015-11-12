@@ -87,43 +87,45 @@ var isObtuse = function (triangle4) {
 // Don't overthink this. Shorter code is probably the answer.
 
 var bankAccounts = [{
-  owner: 'joe',
-  totalsum: 400,
+    owner: 'joe',
+    totalsum: 400,
 }, {
-  owner: 'bro',
-  totalsum: 500,
+    owner: 'bro',
+    totalsum: 500,
 }, {
-  owner: 'low',
-  totalsum: 50,
+    owner: 'low',
+    totalsum: 50,
 }]
-var addAccount = function ( a , b ){
-var createdAccount = {owner: a , totalsum: b ,};
-console.log(createdAccount);
-bankAccounts.push(createdAccount);
+var addAccount = function(a, b) {
+    var createdAccount = {
+        owner: a,
+        totalsum: b,
+    };
+    console.log(createdAccount);
+    bankAccounts.push(createdAccount);;
 }
-var withdrawCash = function (name1,cashout){
-for (var i = 0; i < bankAccounts.length; i++) {
-var banksowner = bankAccounts[i];
-if ((banksowner.owner == name1 )){
-  var remaining = banksowner.totalsum - cashout ;
-  console.log("you have "+ '$'+ remaining + "remaining")
-break;
-}else{
-  console.log("this isnt you!")
-}
-}
-}
-
-var depositCash = function (name2, cashout2){
-  for (var i = 0; i < bankAccounts.length; i++) {
-    var banksowner2 = bankAccounts[i];
-    if((banksowner2.owner == name2)){
-      var remaining2 = banksowner2.totalsum +cashout2;
-      console.log("you have "+ '$'+ remaining2+'remaining')
-    } 
-  };
+var withdrawCash = function(name1, cashout) {
+    for (var i = 0; i < bankAccounts.length; i++) {
+        var banksowner = bankAccounts[i];
+        if ((banksowner.owner == name1)) {
+            var remaining = banksowner.totalsum - cashout;
+            console.log(name1 + " you have " + '$' + remaining + "remaining")
+            break;
+        } else {
+            console.log("this isnt you!")
+        }
+    }
 }
 
+var depositCash = function(name2, cashout2) {
+    for (var i = 0; i < bankAccounts.length; i++) {
+        var banksowner2 = bankAccounts[i];
+        if ((banksowner2.owner == name2)) {
+            var remaining2 = banksowner2.totalsum + cashout2;
+            console.log(name2 + " you have " + '$' + remaining2 + 'remaining')
+        }
+    };
+}
 
 
 
