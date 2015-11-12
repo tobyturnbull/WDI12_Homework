@@ -45,6 +45,8 @@ var bank = [
 	{ accountName: "Rosy", currentBalance: 10 },
 ];
 
+
+// Functions for referencing elsewhere
 var accPos = function (name) {
 	for (var i = 0; i < bank.length; i++) {
 		if ( bank[i].accountName === name )
@@ -70,7 +72,7 @@ var aNewAccount = function (name, balance) {
 var deposit = function (name, adds) {
 	var account = accPos(name)
 	bank[ account ].currentBalance = bank[ account ].currentBalance + adds;
-	console.log ("The current balance is now $"+ accBal(name))
+	console.log ("The current balance is now "+ accBal(name));
 };
 
 
@@ -82,6 +84,8 @@ var withdraw = function (name, subs) {
 	}
 	var account = accPos(name)
 	bank[ account ].currentBalance = bank[ account ].currentBalance - subs;
+	console.log ("The current balance is now "+ accBal(name));
+
 };
 
 
