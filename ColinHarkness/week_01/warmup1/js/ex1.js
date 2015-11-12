@@ -28,7 +28,7 @@ var convert = function (x) {
 		str += "Plang"
 	}
 	if(x % 7 === 0){
-		str += "Plong"
+		str += "Plng"
 	}
 	if (str.length === 0){
 		console.log(num + "");
