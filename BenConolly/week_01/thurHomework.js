@@ -63,7 +63,7 @@ var accBal = function (name) {
 // Make a new account
 var aNewAccount = function (name, balance) {
 	bank.unshift({accountName: name, 
-		accountBalance: balance});
+		currentBalance: balance});
 };
 
 //deposit
@@ -90,7 +90,7 @@ var transfer = function (from, to, num) {
 		withdraw(from, num);
 		deposit(to, num);
 	} else {
-		return "Transfer failed"
+		console.log("Transfer failed")
 	};
 };
 
@@ -98,10 +98,32 @@ var transfer = function (from, to, num) {
 
 // THE STORY BEGINS HERE! LET US ALL TAKE A MAGICAL BANK JOURNEY!
 
+aNewAccount("George Boole", 1000);
+console.log ("George Boole opens a new account with " + currentBal("George Boole") + " in it.");
 
-//new1 opens a new account with $1000 in it.
-//new2 opens a new account with $300 in it.
-//new1 withdraws $600 for a trip to the casino.
-//new2 gets paid, and $437 is added to his account.
-//new1 hires new2 to write some code and transfers them a $350 deposit
-//new2 finishes, so new1 tries to transfer second payment. But he doesn't have the $350.
+aNewAccount("David Hume", 300);
+console.log ("David Hume opens a new account with " + currentBal("David Hume") + " in it.");
+
+withdraw("George Boole", 600);
+console.log ("Boole withdraws $600 for a trip to the casino.");
+console.log ("Boole now has " + currentBal("George Boole") + " in his account.")
+
+deposit("David Hume", 437);
+console.log ("Hume gets paid, and $437 is added to his account.");
+console.log ("Hume now has " + accBal("David Hume") + "in his account.")
+
+transfer("George Boole", "David Hume", 350);
+console.log ("George Boole hires David Hume to help with a logic problem and makes a $350 deposit");
+
+console.log ("David Hume finishes, so George Boole tries to transfer second payment. But he doesn't have the $350.");
+transfer("George Boole", "David Hume", 350);
+
+
+
+
+
+
+
+
+
+
