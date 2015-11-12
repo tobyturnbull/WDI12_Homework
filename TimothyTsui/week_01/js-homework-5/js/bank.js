@@ -41,36 +41,37 @@ var bank = {
         name: aName,
         balance: aBalance,
         withdraw: function( amt ){
+          var res = false;
           console.log('account ' + this.name + ' balance: ' + this.balance);
           if (this.balance >= amt){
             this.balance -= amt;
+            res = true;
           }else{
             console.log("\tInsufficient funds");
-            return false;
           }
-          console.log('\twithdraw $' + amt + ' balance: ' + this.balance);
-          return true;
+          console.log('\twithdraw: ' + amt + ' balance: ' + this.balance);
+          return res;
         },
         deposit: function( amt ){
           console.log('account ' + this.name + ' balance: ' + this.balance);
           if (amt > 0){
             this.balance += amt;
           }
-          console.log('\tdeposit $' + amt + ' balance: ' + this.balance);
+          console.log('\tdeposit: ' + amt + ' balance: ' + this.balance);
           return this.balance;
-        }
+        },
+        transfer: function( to, amt ){
+          var res = false;
+          to = bank.getAccount(to);
+          if (to === null){
+            console.log('payee invalid');
+          }else if (this.withdraw(amt)){
+            to.deposit(amt);
+            res = true;
+          }
+          return res;
+        },
       });
-    },
-    transfer: function( payer, payee, amt ){
-      payer = this.getAccount(payer);
-      payee = this.getAccount(payee);
-      if (payee && payer && payer.withdraw(amt)){
-        payee.deposit(amt);
-      }else{
-        console.log('accounts invalid or amount over payer balance');
-        return false;
-      }
-      return true;
     },
     getAccount: function( name ){
       var res = null;
@@ -97,7 +98,7 @@ bank.totalSum();
 console.log("\nHank has $100. Tom has $2. Tom threatens to reveal Hank's dirty secret that he watches my little pony so Hank transfers $25 to Tom. Hank's balance is $75 and Tom has $27. Tom tell's his friends anyway.");
 var hank = bank.getAccount('hank');
 var tom = bank.getAccount('tom');
-bank.transfer('hank', 'tom', 25);
+hank.transfer('tom', 25);
 bank.totalSum();
 
 console.log("\nTom needs to pay hospital fees after Hank punched him in the face and tries to withdraw $30 but his balance is $27.");
