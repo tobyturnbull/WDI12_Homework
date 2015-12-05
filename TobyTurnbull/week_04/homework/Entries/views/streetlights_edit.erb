@@ -1,0 +1,10 @@
+<form action="/streetlights/<%= @streetlights['id'] %>" method="post">
+  <label for="">Name:</label>
+  <input type="text" name="name" value="<%= @streetlights['name'] %>">
+  <label for="">Era:</label>
+  <input type="text" name="era" value="<%= @streetlights['era'] %>">
+  <label for="">Image:</label>
+  <input type="url" name="image" value="<%= @streetlights['image'] %>">
+
+  <button>Update Street Lights</button>
+</form>

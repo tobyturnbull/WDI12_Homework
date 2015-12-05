@@ -1,0 +1,9 @@
+<h2>All Street Lights</h2>
+
+<ul>
+  <% @streetlights.each do |sl| %>
+    <li>
+      <a href="/streetlights/<%= sl['id'] %>"><%= sl['name'] %></a>
+    </li>
+  <% end %>
+</ul>

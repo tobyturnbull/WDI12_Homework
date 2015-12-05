@@ -1,0 +1,45 @@
+body{
+  background-image: url("http://www.blastr.com/sites/blastr/files/neo-tokyo.jpg");
+  font-family: impact;
+  font-size: 150%;
+}
+
+.container{
+  background-image: url("http://static.tumblr.com/3297c7bcff76b4de3192402ed8b40aa6/vhw8vqz/irMnefuhs/tumblr_static_75prjgdlhew4oww84swo0gs80.png");
+  margin: auto;
+  max-width: 900px;
+  height: 238px;
+  padding: 1em;
+  border-radius: 1em;
+  z-index: 1;
+}
+
+.access{
+  margin: auto;
+  height: 2px;
+  padding: 1em;
+  border-radius: 1em;
+  margin-top: 200px;
+  margin-left: 173px;
+}
+
+.doin{
+  color: white;
+  border-radius: 1em;
+  font-size: 100%;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  z-index: 2;
+
+}
+
+.dimg{
+ margin-left: 345px;
+ z-index: 3;
+ padding: ;
+ max-width: 215px;
+}
+
+ .buttonz{
+  
+}

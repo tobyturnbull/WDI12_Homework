@@ -1,0 +1,11 @@
+<h2><%= @streetlight['name'] %></h2>
+<h3>Era: <%= @streetlight['era'] %></h3>
+
+<% unless @streetlight['image'].nil? %>
+  <img src="<%= @streetlight['image'] %>">
+<% end %>
+
+<p>
+  <a href="/streetlights/<%= @streetlight['id'] %>/delete">Delete</a>
+  <a href="/streetlights/<%= @streetlight['id'] %>/edit">Edit</a>
+</p>

@@ -14,7 +14,7 @@ get '/movie' do
   movie_title = @symbol
   movie_url = "http://omdbapi.com/?t=#{ movie_title }"
   movie_info = HTTParty.get movie_url
-  @poster = movie_info[‘Poster’]
+  @poster = movie_info['Poster']
   
   erb :movie
 end
