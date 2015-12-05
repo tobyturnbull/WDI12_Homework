@@ -11,6 +11,9 @@ get '/movie' do
   @symbol = params[:symbol]
   redirect_to('/') if @symbol == ''
 
+  @movie = Movie.find_by :title => params[:title]
+  if title == nil
+
   movie_title = @symbol
   movie_url = "http://omdbapi.com/?t=#{ movie_title }"
   movie_info = HTTParty.get movie_url
