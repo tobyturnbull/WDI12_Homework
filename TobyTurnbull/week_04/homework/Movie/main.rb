@@ -8,16 +8,18 @@ get '/' do
 end
 
 get '/movie' do
-  @symbol = params[:symbol]
+  @movie = Movie.find_by :title => params[:title]
   redirect_to('/') if @symbol == ''
 
-  @movie = Movie.find_by :title => params[:title]
-  if title == nil
+  if @movie.nil
+    movie_url = "http://omdbapi.com/?t=#{ movie_title }" 
+    movie_info = HTTParty.get movie_url
+    @movie = Movie.new
+    @movie.poster = movie_info['Poster']
+    @movie.save
 
-  movie_title = @symbol
-  movie_url = "http://omdbapi.com/?t=#{ movie_title }"
-  movie_info = HTTParty.get movie_url
-  @poster = movie_info['Poster']
-  
-  erb :movie
+    erb :movie
+  end
+
+
 end
