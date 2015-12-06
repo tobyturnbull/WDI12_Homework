@@ -14,13 +14,12 @@ get '/movie' do
   if @movie.nil?
     @new_movie = Movie.new
     new_movie_url = "http://omdbapi.com/?t=#{ movie_title }" 
-    new_movie_info = HTTParty.get new_movie_url
-    @new_movie.poster = new_movie_info['Poster']
+    movie_info = HTTParty.get movie_url
+    @new_movie.poster = movie_info['Poster']
     @new_movie.save
 
     erb :movie
   end
-
+binding.pry
 
 end
-binding.pry

@@ -1,0 +1,12 @@
+# user searches for title
+# check if title exists in database
+@movie = Movie.find_by :title => params[:title]
+# if title not found # if @movie.nil?
+  # search OMDB for title
+  movie_url = "http://omdbapi.com/?t=#{ params[:title] }" 
+  movie_info = HTTParty.get movie_url
+  @movie = Movie.new
+  @movie.title = movie_info['Title']
+  @movie.poster = movie_info['Poster']
+  @movie.save
+# end
