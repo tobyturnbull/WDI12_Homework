@@ -1,0 +1,13 @@
+<h2><%= @ocean.name %></h2>
+
+<% unless @ocean.image.nil? %>
+  <img src="<%= @ocean.image %>">
+  <% end %>
+
+<p>Orbit: <%= @ocean.orbit %></p>
+<p>Moons: <%= @ocean.moons %></p>
+
+<p>
+  <%= link_to('Edit ocean', "/oceans/#{ @ocean.id }/edit") %>
+  <%= button_to('Destroy ocean', "/oceans/#{ @ocean.id }", :method => :delete) %>
+</p>
